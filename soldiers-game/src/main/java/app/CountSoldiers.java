@@ -19,9 +19,4 @@ public class CountSoldiers implements SoldierVisitor{
 	public int getResults(){
 		return count;
 	}
-
-	public void visit(DecoratorSoldier decoratorSoldier) {
-		count++;
-	}
-
 }

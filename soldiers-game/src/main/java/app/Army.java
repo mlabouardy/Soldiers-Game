@@ -40,6 +40,7 @@ public class Army implements Soldier, Observable{
 	public void parry(int force) {
 		for(Soldier s:soldiers){
 			s.parry(force);
+			notifyObservers();
 		}
 	}
 
@@ -62,7 +63,7 @@ public class Army implements Soldier, Observable{
 	public boolean isAlive() {
 		boolean alive=true;
 		for(Soldier s:soldiers)
-			alive=s.isAlive() && alive;
+			alive=s.isAlive() || alive;
 		return alive;
 	}
 
@@ -82,6 +83,4 @@ public class Army implements Soldier, Observable{
 		for(Observer o:observers)
 			o.update(this, "Update !");
 	}
-
-
 }

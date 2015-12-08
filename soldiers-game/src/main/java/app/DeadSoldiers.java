@@ -6,27 +6,20 @@ import java.util.List;
 import observer.Observable;
 import observer.Observer;
 
-public class SoldiersDeath implements Observer{
-	public List<Soldier> deadSoldiers;
-	
-	public SoldiersDeath(){
-		deadSoldiers=new ArrayList<Soldier>();
-	}
+public class DeadSoldiers implements Observer{
+
 	
 	public void update(Observable o, String msg) {
 		if(o instanceof Army){
 			Army army=(Army)o;
+			List<Soldier> deadSoldiers=new ArrayList<Soldier>();
 			for(Soldier s:army.children()){
 				if(!s.isAlive())
 					deadSoldiers.add(s);
 			}
-			printNames();
+			for(Soldier s:deadSoldiers)
+				System.out.println(s.getName());
 		}
-	}
-	
-	public void printNames(){
-		for(Soldier s:deadSoldiers)
-			System.out.println(s.getName());
 	}
 
 }

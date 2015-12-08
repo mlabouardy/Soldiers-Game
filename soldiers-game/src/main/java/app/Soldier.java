@@ -1,8 +1,9 @@
 package app;
 
+import observer.Observable;
 import observer.Observer;
 
-public interface Soldier {
+public interface Soldier extends Observable {
 	public void parry(int force);
 	public int strike();
 	public int getHealthPoints();
